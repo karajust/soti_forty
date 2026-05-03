@@ -16,6 +16,8 @@
       --muted: #999999;
       --gold: #cccccc;
       --white: #ffffff;
+      --highlight_pink: #f05a5a42;;
+      --text_pink: #f05a5a;
     }
 
     html, body {
@@ -161,7 +163,7 @@
     }
 
     .info-card p{
-      font-size: 15px;
+      font-size: 1.15rem;
       line-height: 1.5rem;
       color: var(--muted);
       text-align: center;
@@ -170,6 +172,7 @@
 
     .info-card {
       margin-bottom: 1.5rem;
+      margin-top: 2.5rem;
     }
 
     .three-view {
@@ -184,25 +187,24 @@
     }
 
     .three-view .card {
-      /* background: var(--white); */
       padding: 1rem 1rem 0.95rem;
       border-radius: 12px;
-      /* border: 0.5px solid rgba(0,0,0,0.05); */
       text-align: center;
     }
 
     .three-view .card h3 {
       font-family: 'Segoe UI', sans-serif;
-      font-size: 0.95rem;
+      font-size: 1.25rem;
       font-weight: 400;
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      color: var(--deep);
+      color: var(--text_pink);
+      /* color: var(--deep); */
       margin-bottom: 0.6rem;
     }
 
     .three-view .card p {
-      font-size: 14px;
+      font-size: 1.15rem;
       line-height: 1.6;
       color: var(--muted);
       margin: 0;
@@ -217,18 +219,18 @@
       animation-fill-mode: forwards;
     }
 
-    .rsvp-card h2 {
+    .rsvp-card h3 {
       font-family: 'Segoe UI', sans-serif;
-      font-size: 0.95rem;
+      font-size: 1.25rem;
       font-weight: 400;
-      color: var(--deep);
+      color: var(--text_pink);
       margin-bottom: 4px;
       text-transform: uppercase;
     }
 
 
     .rsvp-card .rsvp-note {
-      font-size: 15px;
+      font-size: 1.15rem;
       color: var(--muted);
       text-align: center;
       margin: 0.5rem 0 1rem;
@@ -239,7 +241,8 @@
 
     .field label {
       display: block;
-      font-size: 11px;
+      font-size: 1.05rem;
+      padding: 0.25rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--muted);
@@ -253,13 +256,15 @@
       border: 0.5px solid #ddd3cc;
       border-radius: 0px;
       font-family: 'Segoe UI', sans-serif;
-      font-size: 14px;
+      font-size: 1.05rem;
+      text-align: center;
       color: var(--deep);
       background: var(--light_grey);
       outline: none;
       transition: border-color 0.2s;
       appearance: none;
       -webkit-appearance: none;
+      /* margin: 0 0.25rem; */
     }
 
     .field input[type="text"]:focus,
@@ -285,6 +290,10 @@
     }
 
     .guest-options { display: flex; gap: 12px; }
+
+    @media (max-width: 640px) {
+      .guest-options { flex-direction: column; }
+    }
     .guest-opt { flex: 1; cursor: pointer; }
     .guest-opt input[type="radio"] { display: none; }
 
@@ -296,14 +305,14 @@
       border: 0.5px solid #ddd3cc;
       border-radius: 0px;
       background: var(--light_grey);
-      font-size: 14px;
+      font-size: 1.05rem;
       color: var(--muted);
       transition: all 0.15s;
       cursor: pointer;
     }
 
     .guest-opt input[type="radio"]:checked + .guest-opt-label {
-      background: #fdf0e8;
+      background: var(--highlight_pink);
       border-color: var(--accent);
       color: var(--accent);
       font-weight: 500;
@@ -323,7 +332,7 @@
       border: none;
       border-radius: 0px;
       font-family: 'Segoe UI', sans-serif;
-      font-size: 14px;
+      font-size: 1.15rem;
       font-weight: 500;
       letter-spacing: 0.04em;
       cursor: pointer;
@@ -331,7 +340,7 @@
       transition: background 0.2s, transform 0.1s;
     }
 
-    .submit-btn:hover { background: #a85520; }
+    .submit-btn:hover { background: var(--highlight_pink);  border: 0.5px solid var(--accent); color: black;}
     .submit-btn:active { transform: scale(0.98); }
     .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 
@@ -343,14 +352,14 @@
       border: 0.5px solid var(--accent);
       border-radius: 12px;
       font-family: 'Segoe UI', sans-serif;
-      font-size: 13px;
+      font-size: 1.05rem;
       font-weight: 500;
       cursor: pointer;
       margin-top: 0.8rem;
       transition: background 0.15s;
     }
 
-    .edit-btn:hover { background: #fdf0e8; }
+    .edit-btn:hover { background: var(--highlight_pink); border: 0.5px solid var(--accent); color: black;}
 
     /* ── Error ── */
     .error-msg { font-size: 12px; color: #c0392b; margin-top: 5px; display: none; }
@@ -378,7 +387,7 @@
       border-radius: 12px;
       padding: 14px 16px;
       margin-bottom: 1.5rem;
-      font-size: 13px;
+      font-size: 1.05rem;
       color: #7a5a1a;
       line-height: 1.6;
     }
@@ -412,11 +421,11 @@
 <body>
   <div class="container">
 
-    <header class="header">
-      <!-- <p class="eyebrow">You're invited</p> -->
-      <h1>20 + 20  PARTY!</h1>
-      <!-- <div class="divider"></div> -->
-    </header> 
+    <!-- <header class="header">
+      <p class="eyebrow">You're invited</p> -->
+      <!-- <h1>20 + 20  PARTY!</h1> -->
+      <!-- <div class="divider"></div>
+    </header>  -->
 
     <div class="flyer-wrap">
         <!-- <img src="Invitation_Pol_02.jpg" alt="Party flyer" style="display:none;" onload="this.style.display='block'; this.previousElementSibling.style.display='none';" /> -->
@@ -424,39 +433,24 @@
     </div>
 
     <div class="info-card">
-      <!-- <h2>INFO</h2> 
-      <div class="details">
-        <div class="top-row">
-          <div class="date_card">
-            <span class="icon"></span> Σάββατο, 18/07 · 21:00
-          </div>
-          <div class="location_card">
-            <span class="icon"></span> Σχολή Χορού Flamenco Contra Tiempo<br>Φιλικών 58, Περιστέρι
-          </div>
-        </div>
-        <div class="general_card">
-          <span class="star"></span> Βάλτε το χορό, βάζω τα ποτά! <br> (θα υπάρχει open bar)
-        </div>
-      </div>
-    </div> -->
 
     <div class="three-view">
       <div class="card day">
-        <h3>ΜΕΡΑ</h3>
+        <h3>ΠΟΤΕ</h3>
         <p>Σάββατο, 18/07 · 21:00</p>
       </div>
       <div class="card part">
-        <h3>ΜΕΡΟΣ</h3>
+        <h3>ΠΟΥ</h3>
         <p>Σχολή Χορού Flamenco Contra Tiempo · Φιλικών 58, Περιστέρι</p>
       </div>
       <div class="card other">
-        <h3>ΑΛΛΑ</h3>
+        <h3>ΠΩΣ</h3>
         <p>Βάλτε το χορό, βάζω τα ποτά! <br> (θα υπάρχει open bar)</p>
       </div>
     </div>
 
     <div class="rsvp-card">
-      <h2>RSVP</h2>
+      <h3>RSVP</h3>
       <p class="rsvp-note">έως 05.06</p>
       <br>
 
@@ -469,7 +463,7 @@
       <div id="rsvpForm">
         <div class="field">
           <label for="nameField">Όνομα</label>
-          <input type="text" id="nameField" placeholder="Πάρτης Παρτόπουλος" autocomplete="name" />
+          <input type="text" id="nameField" placeholder=". . . " autocomplete="name" />
           <div class="error-msg" id="nameError">Συμπλήρωσε το όνομά σου.</div>
         </div>
 
@@ -503,7 +497,7 @@
           </div>
         </div>
 
-        <button class="submit-btn" id="submitBtn">ΕΠΙΒΕΒΑΙΩΣΗ</button>
+        <button class="submit-btn" id="submitBtn">ΑΠΟΣΤΟΛΗ RSVP</button>
         <button class="edit-btn" id="cancelEditBtn" style="display:none;">ΑΚΥΡΩΣΗ</button>
       </div>
 

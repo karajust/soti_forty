@@ -429,7 +429,7 @@
 
     <div class="flyer-wrap">
         <!-- <img src="Invitation_Pol_02.jpg" alt="Party flyer" style="display:none;" onload="this.style.display='block'; this.previousElementSibling.style.display='none';" /> -->
-        <img src="Invitation_Pol_frame breit_text diag.jpg" alt="Party flyer" style="display:none;" onload="this.style.display='block'; this.previousElementSibling.style.display='none';" />
+        <img src="Invitation_Pol_frame breit_text diag.jpg" alt="Party flyer" style="display:none;" onload="this.style.display='block';" />
     </div>
 
     <div class="info-card">
@@ -536,7 +536,6 @@
     const successPanel   = document.getElementById('successPanel');
     const prevBanner     = document.getElementById('prevBanner');
     const lockedBanner   = document.getElementById('lockedBanner');
-    const cardSubtitle   = document.getElementById('cardSubtitle');
 
     const isPastCutoff = () => new Date() > new Date(RSVP_CUTOFF_DATE + 'T23:59:59');
 
@@ -557,13 +556,19 @@
     });
 
     const populateForm = (saved) => {
-      nameField.value = saved.name;
+      console.log('Populating form with:', saved);
+      if (saved.name) nameField.value = saved.name;
       if (saved.attending) {
-        document.querySelector(`input[name="attending"][value="${saved.attending}"]`).checked = true;
-        document.querySelector(`input[name="attending"][value="${saved.attending}"]`).dispatchEvent(new Event('change'));
+        const attendingValue = saved.attending.toLowerCase();
+        const radio = document.querySelector(`input[name="attending"][value="${attendingValue}"]`);
+        if (radio) {
+          radio.checked = true;
+          document.getElementById('guestCountField').style.display = attendingValue === 'no' ? 'none' : 'block';
+        }
       }
       if (saved.guests) {
-        const radio = document.querySelector(`input[name="guests"][value="${saved.guests}"]`);
+        const guestsValue = String(saved.guests);
+        const radio = document.querySelector(`input[name="guests"][value="${guestsValue}"]`);
         if (radio) radio.checked = true;
       }
     };
@@ -578,7 +583,6 @@
     const showSuccess = (name, attending, guests, isEdit) => {
       rsvpForm.style.display = 'none';
       successPanel.style.display = 'block';
-      cardSubtitle.style.display = 'none';
 
       const first = name.split(' ')[0];
       if (attending === 'yes') {
@@ -630,7 +634,6 @@
           ? `θα είστε ${saved.guests} ${saved.guests > 1 ? 'άτομα' : 'άτομο'}`
           : 'δεν θα τα καταφέρεις'}.`;
       prevBanner.style.display = 'block';
-      cardSubtitle.style.display = 'none';
 
       if (locked) {
         lockedBanner.innerHTML =
@@ -657,6 +660,7 @@
 
     // ── Submit ──
     submitBtn.addEventListener('click', async function () {
+      console.log('Submit clicked');
       if (isPastCutoff()) return;
 
       let valid = true;
@@ -675,33 +679,44 @@
       } else {
         attendingError.style.display = 'none';
       }
-      if (!valid) return;
+      if (!valid) {
+        console.log('Validation failed');
+        return;
+      }
+      console.log('Validation passed');
 
       submitBtn.disabled = true;
       submitBtn.textContent = 'Sending...';
 
       const name      = nameField.value.trim();
       const attending = attendingRadio.value;
+      const guestsRadio = document.querySelector('input[name="guests"]:checked');
       const guests    = attending === 'no'
         ? '1'
-        : document.querySelector('input[name="guests"]:checked').value;
+        : (guestsRadio ? guestsRadio.value : '1');
       const timestamp = new Date().toISOString();
       const isEdit    = !!loadSaved();
 
+      console.log('Saving:', { name, attending, guests, timestamp });
       saveToBrowser({ name, attending, guests, timestamp });
+      console.log('Saved to browser');
       await submitToGoogle(name, attending, guests, timestamp);
+      console.log('Submitted to Google');
 
       prevBanner.style.display = 'none';
+      console.log('Hiding prev banner');
       showSuccess(name, attending, guests, isEdit);
+      console.log('Showing success');
     });
 
     // ── Edit ──
     editBtn.addEventListener('click', function () {
+      console.log('Edit clicked');
       if (isPastCutoff()) return;
       const saved = loadSaved();
+      console.log('Loaded saved for edit:', saved);
       successPanel.style.display = 'none';
       rsvpForm.style.display = 'block';
-      cardSubtitle.style.display = 'none';
       submitBtn.disabled = false;
       submitBtn.textContent = 'Update my RSVP';
       cancelEditBtn.style.display = 'block';

@@ -9,8 +9,8 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      /* --cream: #b97221;  */
-      --cream: #fdf6ee; 
+      --light_grey: #f4f3f4f8; 
+      /* --cream: #fdf6ee;  */
       --blush: #f2c4b0;
       --deep: #2b1a12;
       --accent: #c0622a;
@@ -21,7 +21,7 @@
 
     html, body {
       min-height: 100%;
-      background: var(--cream);
+      background: var(--light_grey);
       font-family: 'DM Sans', sans-serif;
       color: var(--deep);
     }
@@ -35,32 +35,6 @@
       overflow-x: hidden;
     }
 
-    /* body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: radial-gradient(circle, #d4a85328 1px, transparent 1px);
-      background-size: 28px 28px;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    body::after {
-      content: '';
-      position: fixed;
-      top: -120px; left: 50%;
-      transform: translateX(-50%);
-      width: 600px; height: 600px;
-      border-radius: 50%;
-      border: 50px solid transparent;
-      border-top-color: #f2c4b030;
-      border-right-color: #d4a85330;
-      pointer-events: none;
-      z-index: 0;
-      animation: spin 60s linear infinite;
-    } */
-
-    /* @keyframes spin { to { transform: translateX(-50%) rotate(360deg); } } */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(22px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -70,7 +44,7 @@
       position: relative;
       z-index: 1;
       width: 100%;
-      max-width: 480px;
+      max-width: 880px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -96,7 +70,7 @@
       margin-bottom: 12px;
     }
 
-    .header h1 em { font-style: italic; color: var(--accent); }
+    .header h1 em { font-style: 'DM sans'; color: var(--accent); }
 
     .divider { width: 48px; height: 1px; background: var(--gold); margin: 1rem auto; opacity: 0.7; }
 
@@ -110,38 +84,19 @@
       animation-fill-mode: forwards;
     }
 
-    .flyer-wrap img { width: 100%; border-radius: 20px; display: block; box-shadow: 0 8px 40px rgba(43,26,18,0.12); }
-
-    .flyer-placeholder {
-      width: 100%;
-      aspect-ratio: 3/4;
-      border: 2px dashed var(--blush);
-      border-radius: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      background: white;
-      color: var(--muted);
-      text-align: center;
-      padding: 2rem;
-    }
-
-    .flyer-placeholder .icon { font-size: 2.5rem; line-height: 1; }
-    .flyer-placeholder p { font-size: 13px; line-height: 1.5; max-width: 220px; }
+    .flyer-wrap img { width: 100%; border-radius: 0px; display: block; box-shadow: 0 8px 40px rgba(43,26,18,0.12); }
 
     /* ── RSVP Card ── */
     .rsvp-card {
       width: 100%;
-      background: var(--white);
-      border-radius: 24px;
-      border: 0.5px solid #e8d8cc;
+      /* background: var(--white); */
+      /* border-radius: 0px; */
+      /* border: 0.5px solid #e8d8cc; */
       padding: 2rem;
       animation: fadeUp 1s 0.2s ease both;
       opacity: 0;
       animation-fill-mode: forwards;
-      box-shadow: 0 4px 24px rgba(43,26,18,0.06);
+      /* box-shadow: 0 4px 24px rgba(43,26,18,0.06); */
     }
 
     .rsvp-card h2 {
@@ -171,11 +126,11 @@
       width: 100%;
       padding: 11px 14px;
       border: 0.5px solid #ddd3cc;
-      border-radius: 10px;
+      border-radius: 0px;
       font-family: 'DM Sans', sans-serif;
       font-size: 14px;
       color: var(--deep);
-      background: var(--cream);
+      background: var(--light_grey);
       outline: none;
       transition: border-color 0.2s;
       appearance: none;
@@ -214,8 +169,8 @@
       justify-content: center;
       padding: 11px;
       border: 0.5px solid #ddd3cc;
-      border-radius: 10px;
-      background: var(--cream);
+      border-radius: 0px;
+      background: var(--light_grey);
       font-size: 14px;
       color: var(--muted);
       transition: all 0.15s;
@@ -241,7 +196,7 @@
       background: var(--accent);
       color: white;
       border: none;
-      border-radius: 12px;
+      border-radius: 0px;
       font-family: 'DM Sans', sans-serif;
       font-size: 14px;
       font-weight: 500;
@@ -350,7 +305,8 @@
 
     <div class="rsvp-card">
       <h2>Πες μου αν θα τα καταφερεις!</h2>
-      <p class="subtitle" id="cardSubtitle">Θα χαρώ πολύ 🤩</p>
+      <br>
+      <!-- <p class="subtitle" id="cardSubtitle">Θα χαρώ πολύ 🤩</p> -->
 
       <!-- Shown when user has already responded -->
       <div class="prev-banner" id="prevBanner"></div>
@@ -364,6 +320,7 @@
           <input type="text" id="nameField" placeholder="Πάρτης Παρτόπουλος" autocomplete="name" />
           <div class="error-msg" id="nameError">Συμπλήρωσε το όνομά σου.</div>
         </div>
+
 
         <div class="field">
           <label for="attendingField">Θα είσαι κι εσύ εκεί;</label>
@@ -403,7 +360,7 @@
       </div>
     </div>
 
-    <footer>Made with love &amp; a little confetti ✨</footer>
+    <footer></footer>
   </div>
 
   <script>
@@ -512,7 +469,7 @@
 
     if (saved) {
       // User has responded before
-      const submittedAt = new Date(saved.timestamp).toLocaleDateString('en-GB', {
+      const submittedAt = new Date(saved.timestamp).toLocaleDateString('el-GR', {
         day: 'numeric', month: 'long', year: 'numeric'
       });
 

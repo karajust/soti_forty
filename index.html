@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>20+20 PARTY! 🎉</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --light_grey: #f4f3f4f8; 
+      --blush: #e8e8e8;
+      --deep: #333333;
+      --accent: #666666;
+      --muted: #999999;
+      --gold: #cccccc;
+      --white: #ffffff;
+    }
+
+    html, body {
+      min-height: 100%;
+      background: var(--light_grey);
+      font-family: 'DM Sans', sans-serif;
+      color: var(--deep);
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 3rem 1.5rem 5rem;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 880px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2.5rem;
+    }
+
+    /* ── Header ── */
+    .header { text-align: center; animation: fadeUp 0.8s ease both; }
+
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 6vw, 3rem);
+      line-height: 1.15;
+      color: var(--deep);
+      margin-bottom: 12px;
+    }
+
+    .header h1 em { font-style: 'DM sans'; color: var(--accent); }
+
+    .divider { width: 48px; height: 1px; background: var(--gold); margin: 1rem auto; opacity: 0.7; }
+
+    .header .details { font-size: 14px; color: var(--muted); line-height: 1.9; }
+
+    /* ── Flyer ── */
+    .flyer-wrap {
+      width: 100%;
+      animation: fadeUp 0.9s 0.1s ease both;
+      opacity: 0;
+      animation-fill-mode: forwards;
+    }
+
+    .flyer-wrap img { width: 100%; border-radius: 0px; display: block; box-shadow: 0 8px 40px rgba(43,26,18,0.12); }
+
+    /* ── RSVP Card ── */
+    .rsvp-card {
+      width: 100%;
+      /* background: var(--white); */
+      /* border-radius: 0px; */
+      /* border: 0.5px solid #e8d8cc; */
+      padding: 2rem;
+      animation: fadeUp 1s 0.2s ease both;
+      opacity: 0;
+      animation-fill-mode: forwards;
+      /* box-shadow: 0 4px 24px rgba(43,26,18,0.06); */
+    }
+
+    .rsvp-card h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--deep);
+      margin-bottom: 4px;
+    }
+
+    .rsvp-card .subtitle { font-size: 13px; color: var(--muted); margin-bottom: 1.8rem; }
+
+    /* ── Fields ── */
+    .field { margin-bottom: 1.3rem; }
+
+    .field label {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 7px;
+    }
+
+    .field input[type="text"],
+    .field select {
+      width: 100%;
+      padding: 11px 14px;
+      border: 0.5px solid #ddd3cc;
+      border-radius: 0px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      color: var(--deep);
+      background: var(--light_grey);
+      outline: none;
+      transition: border-color 0.2s;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    .field input[type="text"]:focus,
+    .field select:focus { border-color: var(--accent); }
+
+    .field input[type="text"]:disabled,
+    .field select:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .select-wrap { position: relative; }
+    .select-wrap::after {
+      content: '';
+      position: absolute;
+      right: 14px; top: 50%;
+      transform: translateY(-50%);
+      width: 0; height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 6px solid var(--muted);
+      pointer-events: none;
+    }
+
+    .guest-options { display: flex; gap: 12px; }
+    .guest-opt { flex: 1; cursor: pointer; }
+    .guest-opt input[type="radio"] { display: none; }
+
+    .guest-opt-label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px;
+      border: 0.5px solid #ddd3cc;
+      border-radius: 0px;
+      background: var(--light_grey);
+      font-size: 14px;
+      color: var(--muted);
+      transition: all 0.15s;
+      cursor: pointer;
+    }
+
+    .guest-opt input[type="radio"]:checked + .guest-opt-label {
+      background: #fdf0e8;
+      border-color: var(--accent);
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .guest-opt input[type="radio"]:disabled + .guest-opt-label {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    /* ── Buttons ── */
+    .submit-btn {
+      width: 100%;
+      padding: 14px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 0px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      margin-top: 1.6rem;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .submit-btn:hover { background: #a85520; }
+    .submit-btn:active { transform: scale(0.98); }
+    .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+    .edit-btn {
+      width: 100%;
+      padding: 11px;
+      background: transparent;
+      color: var(--accent);
+      border: 0.5px solid var(--accent);
+      border-radius: 12px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      margin-top: 0.8rem;
+      transition: background 0.15s;
+    }
+
+    .edit-btn:hover { background: #fdf0e8; }
+
+    /* ── Error ── */
+    .error-msg { font-size: 12px; color: #c0392b; margin-top: 5px; display: none; }
+
+    /* ── Previous response banner ── */
+    .prev-banner {
+      display: none;
+      background: #f0f9ec;
+      border: 0.5px solid #b8dba8;
+      border-radius: 12px;
+      padding: 12px 16px;
+      margin-bottom: 1.5rem;
+      font-size: 13px;
+      color: #3a6e28;
+      line-height: 1.5;
+    }
+
+    .prev-banner strong { font-weight: 500; }
+
+    /* ── Locked banner ── */
+    .locked-banner {
+      display: none;
+      background: #fdf3e8;
+      border: 0.5px solid #e8c87a;
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin-bottom: 1.5rem;
+      font-size: 13px;
+      color: #7a5a1a;
+      line-height: 1.6;
+    }
+
+    /* ── Success panel ── */
+    .success-panel { display: none; text-align: center; padding: 1rem 0 0.5rem; }
+
+    .success-panel .check {
+      width: 56px; height: 56px;
+      background: #f0f9ec;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1rem;
+      font-size: 24px;
+    }
+
+    .success-panel h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--deep);
+      margin-bottom: 6px;
+    }
+
+    .success-panel p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* ── Footer ── */
+    footer { text-align: center; font-size: 12px; color: var(--muted); opacity: 0.6; animation: fadeUp 1s 0.3s ease both; }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <header class="header">
+      <!-- <p class="eyebrow">You're invited</p> -->
+      <h1>20 +20<br><em>PARTY!</em></h1>
+      <div class="divider"></div>
+      <p class="details">
+        <!-- ✏️ Edit your party details -->
+        Σάββατο, 18/07 · 21:00<br>
+        Σχολή Χορού Flamenco Contra Tiempo<br>
+        Φιλικών 58, Περιστέρι
+      </p>
+    </header>
+
+    <div class="flyer-wrap">
+        <img src="Invitation_Pol_02.jpg" alt="Party flyer" style="display:none;" onload="this.style.display='block'; this.previousElementSibling.style.display='none';" />
+    </div>
+
+    <div class="rsvp-card">
+      <h2>Πες μου αν θα τα καταφερεις!</h2>
+      <br>
+      <!-- <p class="subtitle" id="cardSubtitle">Θα χαρώ πολύ 🤩</p> -->
+
+      <!-- Shown when user has already responded -->
+      <div class="prev-banner" id="prevBanner"></div>
+
+      <!-- Shown after cutoff date -->
+      <div class="locked-banner" id="lockedBanner"></div>
+
+      <div id="rsvpForm">
+        <div class="field">
+          <label for="nameField">Όνομα</label>
+          <input type="text" id="nameField" placeholder="Πάρτης Παρτόπουλος" autocomplete="name" />
+          <div class="error-msg" id="nameError">Συμπλήρωσε το όνομά σου.</div>
+        </div>
+
+
+        <div class="field">
+          <label>Θα είσαι κι εσύ εκεί;</label>
+          <div class="guest-options">
+            <label class="guest-opt">
+              <input type="radio" name="attending" value="yes" />
+              <span class="guest-opt-label">Φυσικά! 🎉</span>
+            </label>
+            <label class="guest-opt">
+              <input type="radio" name="attending" value="no" />
+              <span class="guest-opt-label">Δυστυχώς δεν θα μπορέσω ☹️</span>
+            </label>
+          </div>
+          <div class="error-msg" id="attendingError">Please let us know if you're attending.</div>
+        </div>
+
+        <div class="field" id="guestCountField">
+          <label>Number of guests</label>
+          <div class="guest-options">
+            <label class="guest-opt">
+              <input type="radio" name="guests" value="1" checked />
+              <span class="guest-opt-label">Εγω (1)</span>
+            </label>
+            <label class="guest-opt">
+              <input type="radio" name="guests" value="2" />
+              <span class="guest-opt-label">τα δυο μας (2)</span>
+            </label>
+          </div>
+        </div>
+
+        <button class="submit-btn" id="submitBtn">RSVP 🎈</button>
+        <button class="edit-btn" id="cancelEditBtn" style="display:none;">Ακύρωση</button>
+      </div>
+
+      <div class="success-panel" id="successPanel">
+        <div class="check">✓</div>
+        <h3 id="successTitle">Ευχαριστώ, τα λέμε από κοντά!</h3>
+        <p id="successBody">Η απάντηση καταχωρήθηκε.</p>
+        <button class="edit-btn" id="editBtn" style="margin-top: 1.2rem;">Θέλω να αλλάξω την απάντηση μου</button>
+      </div>
+    </div>
+
+    <footer></footer>
+  </div>
+
+  <script>
+    // ─────────────────────────────────────────
+    // ✏️  CONFIGURATION — edit these two lines
+    // ─────────────────────────────────────────
+    const RSVP_CUTOFF_DATE = '2027-06-07'; // Last day guests can edit (YYYY-MM-DD)
+    const STORAGE_KEY      = 'rsvp_soti_forty';
+
+    // Google Form
+    const FORM_ACTION      = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSdDZJSctjOYn4rlE9ozkje7SoujaFUsDPRTRmjEtfwuMx4wTA/formResponse';
+    const ENTRY_NAME       = 'entry.2004120747';
+    const ENTRY_ATTENDING  = 'entry.308544813';
+    const ENTRY_GUESTS     = 'entry.1068493551';
+    const ENTRY_TIMESTAMP  = 'entry.1988296957';
+    // ─────────────────────────────────────────
+
+    const nameField      = document.getElementById('nameField');
+    const nameError      = document.getElementById('nameError');
+    const attendingError = document.getElementById('attendingError');
+    const submitBtn      = document.getElementById('submitBtn');
+    const editBtn        = document.getElementById('editBtn');
+    const cancelEditBtn  = document.getElementById('cancelEditBtn');
+    const rsvpForm       = document.getElementById('rsvpForm');
+    const successPanel   = document.getElementById('successPanel');
+    const prevBanner     = document.getElementById('prevBanner');
+    const lockedBanner   = document.getElementById('lockedBanner');
+    const cardSubtitle   = document.getElementById('cardSubtitle');
+
+    const isPastCutoff = () => new Date() > new Date(RSVP_CUTOFF_DATE + 'T23:59:59');
+
+    const loadSaved = () => {
+      try { return JSON.parse(localStorage.getItem(STORAGE_KEY)); } catch { return null; }
+    };
+
+    const saveToBrowser = (data) => {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    };
+
+    // Hide guest count when "no" is selected
+    document.querySelectorAll('input[name="attending"]').forEach(radio => {
+      radio.addEventListener('change', function () {
+        document.getElementById('guestCountField').style.display =
+          this.value === 'no' ? 'none' : 'block';
+      });
+    });
+
+    const populateForm = (saved) => {
+      nameField.value = saved.name;
+      if (saved.attending) {
+        document.querySelector(`input[name="attending"][value="${saved.attending}"]`).checked = true;
+        document.querySelector(`input[name="attending"][value="${saved.attending}"]`).dispatchEvent(new Event('change'));
+      }
+      if (saved.guests) {
+        const radio = document.querySelector(`input[name="guests"][value="${saved.guests}"]`);
+        if (radio) radio.checked = true;
+      }
+    };
+
+    const lockForm = () => {
+      nameField.disabled = true;
+      document.querySelectorAll('input[name="attending"]').forEach(r => r.disabled = true);
+      document.querySelectorAll('input[name="guests"]').forEach(r => r.disabled = true);
+      submitBtn.disabled = true;
+    };
+
+    const showSuccess = (name, attending, guests, isEdit) => {
+      rsvpForm.style.display = 'none';
+      successPanel.style.display = 'block';
+      cardSubtitle.style.display = 'none';
+
+      const first = name.split(' ')[0];
+      if (attending === 'yes') {
+        document.getElementById('successTitle').textContent =
+          isEdit ? `Η απάντηση σου ανανεώθηκε, ${first}! Τα λέμε εκεί 🥂` : `Ευχαριστώ, ${first}! Τα λέμε εκεί 🥂`;
+        document.getElementById('successBody').textContent =
+          guests === '2'
+            ? 'Δύο θέσεις καπαρώθηκαν! Ανυπομονώ να γιορτάσουμε!'
+            : 'Μία θέση καπαρώθηκε! Ανυπομονώ να γιορτάσουμε!';
+      } else {
+        document.getElementById('successTitle').textContent = `Ευχαριστώ πολύ για την απάντηση, ${first}.`;
+        document.getElementById('successBody').textContent =
+          'Θα μας λείψεις!';
+      }
+
+      // Show/hide edit button based on cutoff
+      editBtn.style.display = isPastCutoff() ? 'none' : 'block';
+    };
+
+    const submitToGoogle = async (name, attending, guests, timestamp) => {
+      const body = new URLSearchParams();
+      body.append(ENTRY_NAME,      name);
+      body.append(ENTRY_ATTENDING, attending);
+      body.append(ENTRY_GUESTS,    guests);
+      body.append(ENTRY_TIMESTAMP, timestamp);
+      try {
+        await fetch(FORM_ACTION, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: body.toString()
+        });
+      } catch (_) { /* expected with no-cors */ }
+    };
+
+    // ── On page load ──
+    const saved = loadSaved();
+    const locked = isPastCutoff();
+
+    if (saved) {
+      // User has responded before
+      const submittedAt = new Date(saved.timestamp).toLocaleDateString('el-GR', {
+        day: 'numeric', month: 'long', year: 'numeric'
+      });
+
+      prevBanner.innerHTML =
+        `<strong>Η απάντηση σου έχει ήδη καταχωρηθεί</strong> on ${submittedAt} as <strong>${saved.name}</strong> — 
+        ${saved.attending === 'yes'
+          ? `θα είστε ${saved.guests} ${saved.guests > 1 ? 'άτομα' : 'άτομο'}`
+          : 'δεν θα τα καταφέρεις'}.`;
+      prevBanner.style.display = 'block';
+      cardSubtitle.style.display = 'none';
+
+      if (locked) {
+        lockedBanner.innerHTML =
+          `Το RSVP έκλεισε στις ${new Date(RSVP_CUTOFF_DATE).toLocaleDateString('el-GR', { day: 'numeric', month: 'long' })}. Η απάντηση σου έχει ήδη καταχωρηθεί — τα λέμε σύντομα!`;
+        lockedBanner.style.display = 'block';
+        populateForm(saved);
+        lockForm();
+        // Show form in read-only state, hide edit
+        editBtn.style.display = 'none';
+        showSuccess(saved.name, saved.attending, saved.guests, false);
+      } else {
+        // Editable — show success with edit button
+        showSuccess(saved.name, saved.attending, saved.guests, false);
+      }
+    } else if (locked) {
+      // No prior response and past cutoff — form is closed
+      lockedBanner.innerHTML =
+        `Το RSVP έκλεισε στις ${new Date(RSVP_CUTOFF_DATE).toLocaleDateString('el-GR', { day: 'numeric', month: 'long' })}. We're no longer accepting responses.`;
+      lockedBanner.style.display = 'block';
+      cardSubtitle.style.display = 'none';
+      lockForm();
+      submitBtn.textContent = 'To RSVP έκλεισε';
+    }
+
+    // ── Submit ──
+    submitBtn.addEventListener('click', async function () {
+      if (isPastCutoff()) return;
+
+      let valid = true;
+      if (!nameField.value.trim()) {
+        nameError.style.display = 'block';
+        nameField.style.borderColor = '#c0392b';
+        valid = false;
+      } else {
+        nameError.style.display = 'none';
+        nameField.style.borderColor = '';
+      }
+      const attendingRadio = document.querySelector('input[name="attending"]:checked');
+      if (!attendingRadio) {
+        attendingError.style.display = 'block';
+        valid = false;
+      } else {
+        attendingError.style.display = 'none';
+      }
+      if (!valid) return;
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+
+      const name      = nameField.value.trim();
+      const attending = attendingRadio.value;
+      const guests    = attending === 'no'
+        ? '1'
+        : document.querySelector('input[name="guests"]:checked').value;
+      const timestamp = new Date().toISOString();
+      const isEdit    = !!loadSaved();
+
+      saveToBrowser({ name, attending, guests, timestamp });
+      await submitToGoogle(name, attending, guests, timestamp);
+
+      prevBanner.style.display = 'none';
+      showSuccess(name, attending, guests, isEdit);
+    });
+
+    // ── Edit ──
+    editBtn.addEventListener('click', function () {
+      if (isPastCutoff()) return;
+      const saved = loadSaved();
+      successPanel.style.display = 'none';
+      rsvpForm.style.display = 'block';
+      cardSubtitle.style.display = 'none';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Update my RSVP';
+      cancelEditBtn.style.display = 'block';
+      if (saved) populateForm(saved);
+    });
+
+    // ── Cancel edit ──
+    cancelEditBtn.addEventListener('click', function () {
+      const saved = loadSaved();
+      rsvpForm.style.display = 'none';
+      cancelEditBtn.style.display = 'none';
+      if (saved) showSuccess(saved.name, saved.attending, saved.guests, false);
+    });
+  </script>
+</body>
+</html>

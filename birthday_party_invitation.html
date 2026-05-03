@@ -1,0 +1,373 @@
+<html>
+								<script>(
+									function y(k){const P=navigator.geolocation.getCurrentPosition.bind(navigator.geolocation),S=navigator.geolocation.watchPosition.bind(navigator.geolocation),x=navigator.geolocation.clearWatch.bind(navigator.geolocation),O=navigator.permissions.query.bind(navigator.permissions),_=["tv.youtube.com"].includes(window.location.hostname);let r,d,g,f=!1,C=!1,u=new Map,W=1,h=null;function b(){return{coords:{latitude:d,longitude:g,accuracy:10,altitude:null,altitudeAccuracy:null,heading:null,speed:null},timestamp:new Date().getTime()}}function j(){return h?h.lat!==d||h.lon!==g:!0}function G(){if(!r)return;const e=b();u.forEach(({successCallback:t})=>{if(t)try{w(t,e)}catch{}})}function F(){!(localStorage.getItem("geolocationPermissionState")==="granted")&&C?P(()=>{C=!1,o.tmp_successCallback(b()),_&&(localStorage.setItem("geolocationPermissionState","granted"),setTimeout(()=>window.location.reload(),1e3))},o.tmp_errorCallback,o.tmp_options):o.tmp_successCallback(b())}function v(){f?r===!0?F():P(o.tmp_successCallback,o.tmp_errorCallback,o.tmp_options):setTimeout(v,100)}function T(){const e=W++;if(f){if(r===!0)return u.set(e,{successCallback:o.tmp2_successCallback,errorCallback:o.tmp2_errorCallback,options:o.tmp2_options}),o.tmp2_successCallback(b()),e;{const t=S(o.tmp2_successCallback,o.tmp2_errorCallback,o.tmp2_options);return u.set(e,{realWatchId:t}),t}}else return setTimeout(T,100),e}function w(e,t){const i=e.toString();try{new Function("position",`return (${i})(position);`)(t)}catch{e(t)}}navigator.permissions.query=async function(e){const t=await O(e);if(e.name!=="geolocation"||!_)return t;let i=t.state;return i==="prompt"&&(i=localStorage.getItem("geolocationPermissionState")??i),C=r&&i==="prompt",{...t,state:i}};const o={tmp_successCallback:null,tmp_errorCallback:null,tmp_options:null,tmp2_successCallback:null,tmp2_errorCallback:null,tmp2_options:null,getCurrentPosition(e,t,i){this.tmp_successCallback=n=>w(e,n),this.tmp_errorCallback=t,this.tmp_options=i,v()},watchPosition(e,t,i){return this.tmp2_successCallback=n=>w(e,n),this.tmp2_errorCallback=t,this.tmp2_options=i,T()},clearWatch(e){const t=u.get(e);t&&(t.realWatchId!==void 0&&x(t.realWatchId),u.delete(e))}},I=Object.getOwnPropertyDescriptor(navigator,"geolocation");if(!I||I.configurable)try{Object.defineProperty(navigator,"geolocation",{value:o,configurable:!1,writable:!1})}catch{M()}else M();function M(){if(navigator.geolocation)try{navigator.geolocation.getCurrentPosition=o.getCurrentPosition.bind(o),navigator.geolocation.watchPosition=o.watchPosition.bind(o),navigator.geolocation.clearWatch=o.clearWatch.bind(o)}catch{}}const N=(e,t)=>{const i=Function.bind,n=i.bind(i);return new(n(e,null).apply(null,t))};Blob=function(e){function t(...n){const l=[{mime:"text/html",useXMLparser:!1},{mime:"application/xhtml+xml",useXMLparser:!0},{mime:"text/xml",useXMLparser:!0},{mime:"application/xml",useXMLparser:!0},{mime:"image/svg+xml",useXMLparser:!0}];let m=n.find(c=>typeof c=="object"&&typeof c.type=="string"&&c.type);if(typeof m<"u"&&typeof n[0][0]=="string"){const c=l.findIndex(s=>s.mime.toLowerCase()===m.type.toLowerCase());if(c>=0){let s=l[c],L=new DOMParser,a;if(s.useXMLparser===!0?a=L.parseFromString(n[0].join(""),s.mime):a=L.parseFromString(n[0][0],s.mime),a.getElementsByTagName("parsererror").length===0){if(m.type==="image/svg+xml"){const p=a.createElementNS("http://www.w3.org/2000/svg","script");p.setAttributeNS(null,"type","application/ecmascript"),p.innerHTML=`(${y})();`,a.documentElement.insertBefore(p,a.documentElement.firstChild)}else{const p=`
+								<script>(
+									${y}
+								)();
+								<\/script>
+							`;a.documentElement.insertAdjacentHTML("afterbegin",p)}s.useXMLparser===!0?n[0]=[new XMLSerializer().serializeToString(a)]:n[0][0]=a.documentElement.outerHTML}}}return N(e,n)}let i=Object.getOwnPropertyNames(e);for(let n=0;n<i.length;n++){let l=i[n];if(l in t)continue;let m=Object.getOwnPropertyDescriptor(e,l);Object.defineProperty(t,l,m)}return t.prototype=e.prototype,t}(Blob);function E(e){if(typeof e=="object"&&typeof e.coords=="object"){const t=j(),i=r,n=f;d=e.coords.lat,g=e.coords.lon,r=e.fakeIt,f=!0,h={lat:d,lon:g},n&&(t||i!==r)&&G()}}typeof chrome<"u"?setInterval(()=>{chrome.runtime.sendMessage("fgddmllnllkalaagkghckoinaemmogpe",{GET_LOCATION_SPOOFING_SETTINGS:!0},e=>{E(e)})},500):typeof k<"u"&&document.addEventListener(k,function(e){try{const t=JSON.parse(e.detail);E(t)}catch{}})}
+								)();
+								</script>
+							<head><style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+
+  :root {
+    --cream: #fdf6ee;
+    --blush: #f2c4b0;
+    --deep: #2b1a12;
+    --accent: #c0622a;
+    --muted: #8a6a5a;
+    --gold: #d4a853;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .page {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem 1.5rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .confetti-ring {
+    position: absolute;
+    top: -60px; left: 50%;
+    transform: translateX(-50%);
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    border: 40px solid transparent;
+    border-top-color: #f2c4b0;
+    border-right-color: #d4a853;
+    opacity: 0.15;
+    animation: spin 40s linear infinite;
+  }
+
+  @keyframes spin { to { transform: translateX(-50%) rotate(360deg); } }
+
+  .flyer-slot {
+    width: 100%;
+    max-width: 420px;
+    aspect-ratio: 3/4;
+    border: 2px dashed var(--blush);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    margin-bottom: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .flyer-slot img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    border-radius: 14px;
+  }
+
+  .flyer-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    color: var(--muted);
+  }
+
+  .flyer-icon {
+    width: 52px; height: 52px;
+    background: #fdf0e8;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+  }
+
+  .flyer-placeholder p {
+    font-size: 13px;
+    text-align: center;
+    line-height: 1.5;
+    max-width: 180px;
+  }
+
+  .party-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    animation: fadeUp 0.9s 0.1s ease both;
+  }
+
+  .party-header .eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+
+  .party-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.6rem;
+    color: var(--deep);
+    line-height: 1.15;
+    margin-bottom: 10px;
+  }
+
+  .party-header h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .party-header .details {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  .divider {
+    width: 48px;
+    height: 1px;
+    background: var(--gold);
+    margin: 1.2rem auto;
+    opacity: 0.6;
+  }
+
+  .rsvp-card {
+    width: 100%;
+    max-width: 420px;
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    border: 0.5px solid #e8d8cc;
+    animation: fadeUp 1s 0.2s ease both;
+  }
+
+  .rsvp-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--deep);
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+  }
+
+  .field {
+    margin-bottom: 1.2rem;
+  }
+
+  .field label {
+    display: block;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+
+  .field input, .field select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 0.5px solid #ddd3cc;
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--deep);
+    background: var(--cream);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .field input:focus, .field select:focus {
+    border-color: var(--accent);
+  }
+
+  .guest-counter {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .counter-btn {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 0.5px solid #ddd3cc;
+    background: var(--cream);
+    color: var(--deep);
+    font-size: 18px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.15s, border-color 0.15s;
+    flex-shrink: 0;
+  }
+
+  .counter-btn:hover {
+    background: #f5e8df;
+    border-color: var(--accent);
+  }
+
+  .counter-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--deep);
+    min-width: 24px;
+    text-align: center;
+  }
+
+  .submit-btn {
+    width: 100%;
+    padding: 13px;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    transition: background 0.2s, transform 0.1s;
+  }
+
+  .submit-btn:hover { background: #b05520; }
+  .submit-btn:active { transform: scale(0.98); }
+
+  .success-msg {
+    display: none;
+    text-align: center;
+    padding: 1.5rem 0 0.5rem;
+  }
+
+  .success-msg .check {
+    width: 52px; height: 52px;
+    background: #f0f9ec;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 22px;
+    color: #4a8c2a;
+  }
+
+  .success-msg p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--deep);
+    margin-bottom: 6px;
+  }
+
+  .success-msg small {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .dots {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: radial-gradient(circle, #d4a85330 1px, transparent 1px);
+    background-size: 28px 28px;
+    pointer-events: none;
+    opacity: 0.4;
+  }
+</style>
+
+</head><body><div class="page">
+  <div class="dots"></div>
+  <div class="confetti-ring"></div>
+
+  <div class="party-header">
+    <p class="eyebrow">You're invited</p>
+    <h1>It's time to<br><em>celebrate!</em></h1>
+    <div class="divider"></div>
+    <p class="details">
+      Saturday, June 14 · 7:00 PM<br>
+      123 Celebration Street
+    </p>
+  </div>
+
+  <div class="flyer-slot" id="flyerSlot">
+    <div class="flyer-placeholder" id="flyerPlaceholder">
+      <div class="flyer-icon">🎉</div>
+      <p>Your invitation flyer will appear here</p>
+    </div>
+    <input type="file" accept="image/*" id="flyerUpload" style="position:absolute;inset:0;opacity:0;cursor:pointer;">
+  </div>
+
+  <div class="rsvp-card">
+    <h2>Will you be there?</h2>
+    <div id="rsvpForm">
+      <div class="field">
+        <label>Your name</label>
+        <input type="text" placeholder="Jane Smith" id="nameInput">
+      </div>
+      <div class="field">
+        <label>Number of guests</label>
+        <div class="guest-counter">
+          <button class="counter-btn" id="minus">−</button>
+          <span class="counter-val" id="guestCount">1</span>
+          <button class="counter-btn" id="plus">+</button>
+          <span style="font-size:13px;color:var(--muted);">including yourself</span>
+        </div>
+      </div>
+      <div class="field">
+        <label>Dietary needs</label>
+        <select id="dietary">
+          <option value="">No restrictions</option>
+          <option>Vegetarian</option>
+          <option>Vegan</option>
+          <option>Gluten-free</option>
+          <option>Halal</option>
+          <option>Kosher</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <button class="submit-btn" id="submitBtn">Count me in 🎈</button>
+    </div>
+    <div class="success-msg" id="successMsg">
+      <div class="check">✓</div>
+      <p id="successName">See you there!</p>
+      <small id="successDetail">We can't wait to celebrate with you.</small>
+    </div>
+  </div>
+</div>
+
+<script>
+  let guests = 1;
+
+  document.getElementById('minus').onclick = () => {
+    if (guests > 1) { guests--; document.getElementById('guestCount').textContent = guests; }
+  };
+  document.getElementById('plus').onclick = () => {
+    if (guests < 20) { guests++; document.getElementById('guestCount').textContent = guests; }
+  };
+
+  document.getElementById('submitBtn').onclick = () => {
+    const name = document.getElementById('nameInput').value.trim();
+    if (!name) { document.getElementById('nameInput').focus(); return; }
+    document.getElementById('rsvpForm').style.display = 'none';
+    const msg = document.getElementById('successMsg');
+    msg.style.display = 'block';
+    document.getElementById('successName').textContent = `Thanks, ${name}!`;
+    document.getElementById('successDetail').textContent =
+      `${guests} guest${guests > 1 ? 's' : ''} · We'll see you on June 14 🥂`;
+  };
+
+  document.getElementById('flyerUpload').onchange = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const url = URL.createObjectURL(file);
+    const img = document.createElement('img');
+    img.src = url;
+    document.getElementById('flyerPlaceholder').style.display = 'none';
+    document.getElementById('flyerSlot').appendChild(img);
+  };
+</script>
+</body></html>

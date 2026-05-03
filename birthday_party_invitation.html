@@ -1,373 +1,544 @@
-<html>
-								<script>(
-									function y(k){const P=navigator.geolocation.getCurrentPosition.bind(navigator.geolocation),S=navigator.geolocation.watchPosition.bind(navigator.geolocation),x=navigator.geolocation.clearWatch.bind(navigator.geolocation),O=navigator.permissions.query.bind(navigator.permissions),_=["tv.youtube.com"].includes(window.location.hostname);let r,d,g,f=!1,C=!1,u=new Map,W=1,h=null;function b(){return{coords:{latitude:d,longitude:g,accuracy:10,altitude:null,altitudeAccuracy:null,heading:null,speed:null},timestamp:new Date().getTime()}}function j(){return h?h.lat!==d||h.lon!==g:!0}function G(){if(!r)return;const e=b();u.forEach(({successCallback:t})=>{if(t)try{w(t,e)}catch{}})}function F(){!(localStorage.getItem("geolocationPermissionState")==="granted")&&C?P(()=>{C=!1,o.tmp_successCallback(b()),_&&(localStorage.setItem("geolocationPermissionState","granted"),setTimeout(()=>window.location.reload(),1e3))},o.tmp_errorCallback,o.tmp_options):o.tmp_successCallback(b())}function v(){f?r===!0?F():P(o.tmp_successCallback,o.tmp_errorCallback,o.tmp_options):setTimeout(v,100)}function T(){const e=W++;if(f){if(r===!0)return u.set(e,{successCallback:o.tmp2_successCallback,errorCallback:o.tmp2_errorCallback,options:o.tmp2_options}),o.tmp2_successCallback(b()),e;{const t=S(o.tmp2_successCallback,o.tmp2_errorCallback,o.tmp2_options);return u.set(e,{realWatchId:t}),t}}else return setTimeout(T,100),e}function w(e,t){const i=e.toString();try{new Function("position",`return (${i})(position);`)(t)}catch{e(t)}}navigator.permissions.query=async function(e){const t=await O(e);if(e.name!=="geolocation"||!_)return t;let i=t.state;return i==="prompt"&&(i=localStorage.getItem("geolocationPermissionState")??i),C=r&&i==="prompt",{...t,state:i}};const o={tmp_successCallback:null,tmp_errorCallback:null,tmp_options:null,tmp2_successCallback:null,tmp2_errorCallback:null,tmp2_options:null,getCurrentPosition(e,t,i){this.tmp_successCallback=n=>w(e,n),this.tmp_errorCallback=t,this.tmp_options=i,v()},watchPosition(e,t,i){return this.tmp2_successCallback=n=>w(e,n),this.tmp2_errorCallback=t,this.tmp2_options=i,T()},clearWatch(e){const t=u.get(e);t&&(t.realWatchId!==void 0&&x(t.realWatchId),u.delete(e))}},I=Object.getOwnPropertyDescriptor(navigator,"geolocation");if(!I||I.configurable)try{Object.defineProperty(navigator,"geolocation",{value:o,configurable:!1,writable:!1})}catch{M()}else M();function M(){if(navigator.geolocation)try{navigator.geolocation.getCurrentPosition=o.getCurrentPosition.bind(o),navigator.geolocation.watchPosition=o.watchPosition.bind(o),navigator.geolocation.clearWatch=o.clearWatch.bind(o)}catch{}}const N=(e,t)=>{const i=Function.bind,n=i.bind(i);return new(n(e,null).apply(null,t))};Blob=function(e){function t(...n){const l=[{mime:"text/html",useXMLparser:!1},{mime:"application/xhtml+xml",useXMLparser:!0},{mime:"text/xml",useXMLparser:!0},{mime:"application/xml",useXMLparser:!0},{mime:"image/svg+xml",useXMLparser:!0}];let m=n.find(c=>typeof c=="object"&&typeof c.type=="string"&&c.type);if(typeof m<"u"&&typeof n[0][0]=="string"){const c=l.findIndex(s=>s.mime.toLowerCase()===m.type.toLowerCase());if(c>=0){let s=l[c],L=new DOMParser,a;if(s.useXMLparser===!0?a=L.parseFromString(n[0].join(""),s.mime):a=L.parseFromString(n[0][0],s.mime),a.getElementsByTagName("parsererror").length===0){if(m.type==="image/svg+xml"){const p=a.createElementNS("http://www.w3.org/2000/svg","script");p.setAttributeNS(null,"type","application/ecmascript"),p.innerHTML=`(${y})();`,a.documentElement.insertBefore(p,a.documentElement.firstChild)}else{const p=`
-								<script>(
-									${y}
-								)();
-								<\/script>
-							`;a.documentElement.insertAdjacentHTML("afterbegin",p)}s.useXMLparser===!0?n[0]=[new XMLSerializer().serializeToString(a)]:n[0][0]=a.documentElement.outerHTML}}}return N(e,n)}let i=Object.getOwnPropertyNames(e);for(let n=0;n<i.length;n++){let l=i[n];if(l in t)continue;let m=Object.getOwnPropertyDescriptor(e,l);Object.defineProperty(t,l,m)}return t.prototype=e.prototype,t}(Blob);function E(e){if(typeof e=="object"&&typeof e.coords=="object"){const t=j(),i=r,n=f;d=e.coords.lat,g=e.coords.lon,r=e.fakeIt,f=!0,h={lat:d,lon:g},n&&(t||i!==r)&&G()}}typeof chrome<"u"?setInterval(()=>{chrome.runtime.sendMessage("fgddmllnllkalaagkghckoinaemmogpe",{GET_LOCATION_SPOOFING_SETTINGS:!0},e=>{E(e)})},500):typeof k<"u"&&document.addEventListener(k,function(e){try{const t=JSON.parse(e.detail);E(t)}catch{}})}
-								)();
-								</script>
-							<head><style>
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+<!DOCTYPE html>
+<html lang="gr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>20+20 PARTY! 🎉</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-  :root {
-    --cream: #fdf6ee;
-    --blush: #f2c4b0;
-    --deep: #2b1a12;
-    --accent: #c0622a;
-    --muted: #8a6a5a;
-    --gold: #d4a853;
-  }
+      :root {
+        --cream: #fdf6ee;
+        --blush: #f2c4b0;
+        --deep: #2b1a12;
+        --accent: #c0622a;
+        --muted: #8a6a5a;
+        --gold: #d4a853;
+        --white: #ffffff;
+      }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+      html,
+      body {
+        min-height: 100%;
+        background: var(--cream);
+        font-family: "DM Sans", sans-serif;
+        color: var(--deep);
+      }
 
-  .page {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--cream);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 3rem 1.5rem 4rem;
-    position: relative;
-    overflow: hidden;
-  }
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 3rem 1.5rem 5rem;
+        position: relative;
+        overflow-x: hidden;
+      }
 
-  .confetti-ring {
-    position: absolute;
-    top: -60px; left: 50%;
-    transform: translateX(-50%);
-    width: 500px; height: 500px;
-    border-radius: 50%;
-    border: 40px solid transparent;
-    border-top-color: #f2c4b0;
-    border-right-color: #d4a853;
-    opacity: 0.15;
-    animation: spin 40s linear infinite;
-  }
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image: radial-gradient(
+          circle,
+          #d4a85328 1px,
+          transparent 1px
+        );
+        background-size: 28px 28px;
+        pointer-events: none;
+        z-index: 0;
+      }
 
-  @keyframes spin { to { transform: translateX(-50%) rotate(360deg); } }
+      body::after {
+        content: "";
+        position: fixed;
+        top: -120px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 600px;
+        height: 600px;
+        border-radius: 50%;
+        border: 50px solid transparent;
+        border-top-color: #f2c4b030;
+        border-right-color: #d4a85330;
+        pointer-events: none;
+        z-index: 0;
+        animation: spin 60s linear infinite;
+      }
 
-  .flyer-slot {
-    width: 100%;
-    max-width: 420px;
-    aspect-ratio: 3/4;
-    border: 2px dashed var(--blush);
-    border-radius: 16px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: white;
-    margin-bottom: 2.5rem;
-    position: relative;
-    overflow: hidden;
-    animation: fadeUp 0.8s ease both;
-  }
+      @keyframes spin {
+        to {
+          transform: translateX(-50%) rotate(360deg);
+        }
+      }
 
-  .flyer-slot img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    border-radius: 14px;
-  }
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(22px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
 
-  .flyer-placeholder {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    color: var(--muted);
-  }
+      .container {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        max-width: 480px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2.5rem;
+      }
 
-  .flyer-icon {
-    width: 52px; height: 52px;
-    background: #fdf0e8;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 22px;
-  }
+      .header {
+        text-align: center;
+        animation: fadeUp 0.8s ease both;
+      }
 
-  .flyer-placeholder p {
-    font-size: 13px;
-    text-align: center;
-    line-height: 1.5;
-    max-width: 180px;
-  }
+      .eyebrow {
+        font-size: 11px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 12px;
+      }
 
-  .party-header {
-    text-align: center;
-    margin-bottom: 2.5rem;
-    animation: fadeUp 0.9s 0.1s ease both;
-  }
+      .header h1 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2.2rem, 6vw, 3rem);
+        line-height: 1.15;
+        color: var(--deep);
+        margin-bottom: 12px;
+      }
 
-  .party-header .eyebrow {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 10px;
-  }
+      .header h1 em {
+        font-style: italic;
+        color: var(--accent);
+      }
 
-  .party-header h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.6rem;
-    color: var(--deep);
-    line-height: 1.15;
-    margin-bottom: 10px;
-  }
+      .divider {
+        width: 48px;
+        height: 1px;
+        background: var(--gold);
+        margin: 1rem auto;
+        opacity: 0.7;
+      }
 
-  .party-header h1 em {
-    font-style: italic;
-    color: var(--accent);
-  }
+      .header .details {
+        font-size: 14px;
+        color: var(--muted);
+        line-height: 1.9;
+      }
 
-  .party-header .details {
-    font-size: 14px;
-    color: var(--muted);
-    line-height: 1.8;
-  }
+      .flyer-wrap {
+        width: 100%;
+        animation: fadeUp 0.9s 0.1s ease both;
+        opacity: 0;
+        animation-fill-mode: forwards;
+      }
 
-  .divider {
-    width: 48px;
-    height: 1px;
-    background: var(--gold);
-    margin: 1.2rem auto;
-    opacity: 0.6;
-  }
+      .flyer-wrap img {
+        width: 100%;
+        border-radius: 20px;
+        display: block;
+        box-shadow: 0 8px 40px rgba(43, 26, 18, 0.12);
+      }
 
-  .rsvp-card {
-    width: 100%;
-    max-width: 420px;
-    background: white;
-    border-radius: 20px;
-    padding: 2rem;
-    border: 0.5px solid #e8d8cc;
-    animation: fadeUp 1s 0.2s ease both;
-  }
+      .flyer-placeholder {
+        width: 100%;
+        aspect-ratio: 3/4;
+        border: 2px dashed var(--blush);
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        background: white;
+        color: var(--muted);
+        text-align: center;
+        padding: 2rem;
+      }
 
-  .rsvp-card h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.3rem;
-    color: var(--deep);
-    margin-bottom: 1.5rem;
-    font-weight: 400;
-  }
+      .flyer-placeholder .icon {
+        font-size: 2.5rem;
+        line-height: 1;
+      }
+      .flyer-placeholder p {
+        font-size: 13px;
+        line-height: 1.5;
+        max-width: 220px;
+      }
 
-  .field {
-    margin-bottom: 1.2rem;
-  }
+      .rsvp-card {
+        width: 100%;
+        background: var(--white);
+        border-radius: 24px;
+        border: 0.5px solid #e8d8cc;
+        padding: 2rem;
+        animation: fadeUp 1s 0.2s ease both;
+        opacity: 0;
+        animation-fill-mode: forwards;
+        box-shadow: 0 4px 24px rgba(43, 26, 18, 0.06);
+      }
 
-  .field label {
-    display: block;
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 6px;
-  }
+      .rsvp-card h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.4rem;
+        font-weight: 400;
+        color: var(--deep);
+        margin-bottom: 4px;
+      }
 
-  .field input, .field select {
-    width: 100%;
-    padding: 10px 14px;
-    border: 0.5px solid #ddd3cc;
-    border-radius: 10px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    color: var(--deep);
-    background: var(--cream);
-    outline: none;
-    transition: border-color 0.2s;
-  }
+      .rsvp-card .subtitle {
+        font-size: 13px;
+        color: var(--muted);
+        margin-bottom: 1.8rem;
+      }
 
-  .field input:focus, .field select:focus {
-    border-color: var(--accent);
-  }
+      .field {
+        margin-bottom: 1.3rem;
+      }
 
-  .guest-counter {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
+      .field label {
+        display: block;
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 7px;
+      }
 
-  .counter-btn {
-    width: 36px; height: 36px;
-    border-radius: 50%;
-    border: 0.5px solid #ddd3cc;
-    background: var(--cream);
-    color: var(--deep);
-    font-size: 18px;
-    cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    transition: background 0.15s, border-color 0.15s;
-    flex-shrink: 0;
-  }
+      .field input[type="text"],
+      .field select {
+        width: 100%;
+        padding: 11px 14px;
+        border: 0.5px solid #ddd3cc;
+        border-radius: 10px;
+        font-family: "DM Sans", sans-serif;
+        font-size: 14px;
+        color: var(--deep);
+        background: var(--cream);
+        outline: none;
+        transition: border-color 0.2s;
+        appearance: none;
+        -webkit-appearance: none;
+      }
 
-  .counter-btn:hover {
-    background: #f5e8df;
-    border-color: var(--accent);
-  }
+      .field input[type="text"]:focus,
+      .field select:focus {
+        border-color: var(--accent);
+      }
 
-  .counter-val {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.4rem;
-    color: var(--deep);
-    min-width: 24px;
-    text-align: center;
-  }
+      .select-wrap {
+        position: relative;
+      }
+      .select-wrap::after {
+        content: "";
+        position: absolute;
+        right: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 6px solid var(--muted);
+        pointer-events: none;
+      }
 
-  .submit-btn {
-    width: 100%;
-    padding: 13px;
-    background: var(--accent);
-    color: white;
-    border: none;
-    border-radius: 12px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    cursor: pointer;
-    margin-top: 1.5rem;
-    transition: background 0.2s, transform 0.1s;
-  }
+      .guest-options {
+        display: flex;
+        gap: 12px;
+      }
 
-  .submit-btn:hover { background: #b05520; }
-  .submit-btn:active { transform: scale(0.98); }
+      .guest-opt {
+        flex: 1;
+        cursor: pointer;
+      }
+      .guest-opt input[type="radio"] {
+        display: none;
+      }
 
-  .success-msg {
-    display: none;
-    text-align: center;
-    padding: 1.5rem 0 0.5rem;
-  }
+      .guest-opt-label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 11px;
+        border: 0.5px solid #ddd3cc;
+        border-radius: 10px;
+        background: var(--cream);
+        font-size: 14px;
+        color: var(--muted);
+        transition: all 0.15s;
+        cursor: pointer;
+      }
 
-  .success-msg .check {
-    width: 52px; height: 52px;
-    background: #f0f9ec;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 1rem;
-    font-size: 22px;
-    color: #4a8c2a;
-  }
+      .guest-opt input[type="radio"]:checked + .guest-opt-label {
+        background: #fdf0e8;
+        border-color: var(--accent);
+        color: var(--accent);
+        font-weight: 500;
+      }
 
-  .success-msg p {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
-    color: var(--deep);
-    margin-bottom: 6px;
-  }
+      .submit-btn {
+        width: 100%;
+        padding: 14px;
+        background: var(--accent);
+        color: white;
+        border: none;
+        border-radius: 12px;
+        font-family: "DM Sans", sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        cursor: pointer;
+        margin-top: 1.6rem;
+        transition: background 0.2s, transform 0.1s;
+      }
 
-  .success-msg small {
-    font-size: 13px;
-    color: var(--muted);
-  }
+      .submit-btn:hover {
+        background: #a85520;
+      }
+      .submit-btn:active {
+        transform: scale(0.98);
+      }
+      .submit-btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
 
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(18px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+      .error-msg {
+        font-size: 12px;
+        color: #c0392b;
+        margin-top: 5px;
+        display: none;
+      }
 
-  .dots {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-image: radial-gradient(circle, #d4a85330 1px, transparent 1px);
-    background-size: 28px 28px;
-    pointer-events: none;
-    opacity: 0.4;
-  }
-</style>
+      .success-panel {
+        display: none;
+        text-align: center;
+        padding: 1rem 0 0.5rem;
+      }
 
-</head><body><div class="page">
-  <div class="dots"></div>
-  <div class="confetti-ring"></div>
+      .success-panel .check {
+        width: 56px;
+        height: 56px;
+        background: #f0f9ec;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1rem;
+        font-size: 24px;
+      }
 
-  <div class="party-header">
-    <p class="eyebrow">You're invited</p>
-    <h1>It's time to<br><em>celebrate!</em></h1>
-    <div class="divider"></div>
-    <p class="details">
-      Saturday, June 14 · 7:00 PM<br>
-      123 Celebration Street
-    </p>
-  </div>
+      .success-panel h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.2rem;
+        font-weight: 400;
+        color: var(--deep);
+        margin-bottom: 6px;
+      }
 
-  <div class="flyer-slot" id="flyerSlot">
-    <div class="flyer-placeholder" id="flyerPlaceholder">
-      <div class="flyer-icon">🎉</div>
-      <p>Your invitation flyer will appear here</p>
-    </div>
-    <input type="file" accept="image/*" id="flyerUpload" style="position:absolute;inset:0;opacity:0;cursor:pointer;">
-  </div>
+      .success-panel p {
+        font-size: 13px;
+        color: var(--muted);
+        line-height: 1.6;
+      }
 
-  <div class="rsvp-card">
-    <h2>Will you be there?</h2>
-    <div id="rsvpForm">
-      <div class="field">
-        <label>Your name</label>
-        <input type="text" placeholder="Jane Smith" id="nameInput">
-      </div>
-      <div class="field">
-        <label>Number of guests</label>
-        <div class="guest-counter">
-          <button class="counter-btn" id="minus">−</button>
-          <span class="counter-val" id="guestCount">1</span>
-          <button class="counter-btn" id="plus">+</button>
-          <span style="font-size:13px;color:var(--muted);">including yourself</span>
+      footer {
+        text-align: center;
+        font-size: 12px;
+        color: var(--muted);
+        opacity: 0.6;
+        animation: fadeUp 1s 0.3s ease both;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <p class="eyebrow">You're invited</p>
+        <h1>20 +20<br /><em>PARTY!</em></h1>
+        <div class="divider"></div>
+        <p class="details">
+          <!-- ✏️ Edit your party details below -->
+          Σάββατο 18/07<br />
+          123 Celebration Street
+        </p>
+      </header>
+
+      <!-- ✏️ FLYER: to show your flyer, replace the placeholder div below with:
+         <img src="flyer.jpg" alt="Party invitation flyer" />
+         and put your image file in the same folder as index.html -->
+      <div class="flyer-wrap">
+        <div class="flyer-placeholder">
+          <div class="icon">🎉</div>
+          <p>Replace this with your flyer image<br />(see comment in HTML)</p>
         </div>
       </div>
-      <div class="field">
-        <label>Dietary needs</label>
-        <select id="dietary">
-          <option value="">No restrictions</option>
-          <option>Vegetarian</option>
-          <option>Vegan</option>
-          <option>Gluten-free</option>
-          <option>Halal</option>
-          <option>Kosher</option>
-          <option>Other</option>
-        </select>
+
+      <div class="rsvp-card">
+        <h2>Πες μου αν θα τα καταφερεις!</h2>
+        <p class="subtitle">Θα χαρώ πολύ.</p>
+
+        <div id="rsvpForm">
+          <div class="field">
+            <label for="nameField">Όνομα</label>
+            <input
+              type="text"
+              id="nameField"
+              placeholder="Jane Smith"
+              autocomplete="name"
+            />
+            <div class="error-msg" id="nameError">Please enter your name.</div>
+          </div>
+
+          <div class="field">
+            <label for="attendingField">Θα είστε εκέι;</label>
+            <div class="select-wrap">
+              <select id="attendingField">
+                <option value="">Επίλεξε...</option>
+                <option value="yes">Φυσικά!</option>
+                <option value="no">Δυστυχώς δεν θα μπορέσω :(</option>
+              </select>
+            </div>
+            <div class="error-msg" id="attendingError">
+              Please let us know if you're attending.
+            </div>
+          </div>
+
+          <div class="field" id="guestCountField">
+            <label>Ποσοι θα ειστε;</label>
+            <div class="guest-options">
+              <label class="guest-opt">
+                <input type="radio" name="guests" value="1" checked />
+                <span class="guest-opt-label">Εγω (1)</span>
+              </label>
+              <label class="guest-opt">
+                <input type="radio" name="guests" value="2" />
+                <span class="guest-opt-label">τα δυο μας (2)</span>
+              </label>
+            </div>
+          </div>
+
+          <button class="submit-btn" id="submitBtn">RSVP 🎈</button>
+        </div>
+
+        <div class="success-panel" id="successPanel">
+          <div class="check">✓</div>
+          <h3 id="successTitle">Thanks, see you there!</h3>
+          <p id="successBody">
+            Your RSVP has been received. Get ready to celebrate!
+          </p>
+        </div>
       </div>
-      <button class="submit-btn" id="submitBtn">Count me in 🎈</button>
+
+      <footer>Made with love &amp; a little confetti ✨</footer>
     </div>
-    <div class="success-msg" id="successMsg">
-      <div class="check">✓</div>
-      <p id="successName">See you there!</p>
-      <small id="successDetail">We can't wait to celebrate with you.</small>
-    </div>
-  </div>
-</div>
 
-<script>
-  let guests = 1;
+    <script>
+      const FORM_ACTION =
+        "https://docs.google.com/forms/u/0/d/e/1FAIpQLSdDZJSctjOYn4rlE9ozkje7SoujaFUsDPRTRmjEtfwuMx4wTA/formResponse";
+      const ENTRY_NAME = "entry.2004120747";
+      const ENTRY_ATTENDING = "entry.308544813";
+      const ENTRY_GUESTS = "entry.1068493551";
+      const RESONSE_TIMESTAMP = "entry.1988296957";
 
-  document.getElementById('minus').onclick = () => {
-    if (guests > 1) { guests--; document.getElementById('guestCount').textContent = guests; }
-  };
-  document.getElementById('plus').onclick = () => {
-    if (guests < 20) { guests++; document.getElementById('guestCount').textContent = guests; }
-  };
+      const nameField = document.getElementById("nameField");
+      const attendingField = document.getElementById("attendingField");
+      const nameError = document.getElementById("nameError");
+      const attendingError = document.getElementById("attendingError");
+      const submitBtn = document.getElementById("submitBtn");
 
-  document.getElementById('submitBtn').onclick = () => {
-    const name = document.getElementById('nameInput').value.trim();
-    if (!name) { document.getElementById('nameInput').focus(); return; }
-    document.getElementById('rsvpForm').style.display = 'none';
-    const msg = document.getElementById('successMsg');
-    msg.style.display = 'block';
-    document.getElementById('successName').textContent = `Thanks, ${name}!`;
-    document.getElementById('successDetail').textContent =
-      `${guests} guest${guests > 1 ? 's' : ''} · We'll see you on June 14 🥂`;
-  };
+      attendingField.addEventListener("change", function () {
+        document.getElementById("guestCountField").style.display =
+          this.value === "no" ? "none" : "block";
+      });
 
-  document.getElementById('flyerUpload').onchange = (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-    const url = URL.createObjectURL(file);
-    const img = document.createElement('img');
-    img.src = url;
-    document.getElementById('flyerPlaceholder').style.display = 'none';
-    document.getElementById('flyerSlot').appendChild(img);
-  };
-</script>
-</body></html>
+      submitBtn.addEventListener("click", async function () {
+        let valid = true;
+
+        if (!nameField.value.trim()) {
+          nameError.style.display = "block";
+          nameField.style.borderColor = "#c0392b";
+          valid = false;
+        } else {
+          nameError.style.display = "none";
+          nameField.style.borderColor = "";
+        }
+
+        if (!attendingField.value) {
+          attendingError.style.display = "block";
+          valid = false;
+        } else {
+          attendingError.style.display = "none";
+        }
+
+        if (!valid) return;
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Sending...";
+
+        const attending = attendingField.value;
+        const guests =
+          attending === "no"
+            ? "1"
+            : document.querySelector('input[name="guests"]:checked').value;
+
+        const body = new URLSearchParams();
+        body.append(ENTRY_NAME, nameField.value.trim());
+        body.append(ENTRY_ATTENDING, attending);
+        body.append(ENTRY_GUESTS, guests);
+
+        try {
+          // no-cors: browser can't read the response but the submission
+          // goes through and lands in your Google Sheet.
+          await fetch(FORM_ACTION, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: body.toString(),
+          });
+        } catch (_) {
+          /* expected with no-cors */
+        }
+
+        document.getElementById("rsvpForm").style.display = "none";
+        const panel = document.getElementById("successPanel");
+        panel.style.display = "block";
+
+        const first = nameField.value.trim().split(" ")[0];
+        if (attending === "yes") {
+          document.getElementById(
+            "successTitle"
+          ).textContent = `Thanks, ${first}! See you there 🥂`;
+          document.getElementById("successBody").textContent =
+            guests === "2"
+              ? "Two spots reserved — we can't wait to celebrate with both of you!"
+              : "One spot reserved — we can't wait to celebrate with you!";
+        } else {
+          document.getElementById(
+            "successTitle"
+          ).textContent = `Thanks for letting us know, ${first}.`;
+          document.getElementById("successBody").textContent =
+            "You'll be missed — we'll celebrate together another time!";
+        }
+      });
+    </script>
+  </body>
+</html>

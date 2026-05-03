@@ -10,12 +10,11 @@
 
     :root {
       --light_grey: #f4f3f4f8; 
-      /* --cream: #fdf6ee;  */
-      --blush: #f2c4b0;
-      --deep: #2b1a12;
-      --accent: #c0622a;
-      --muted: #8a6a5a;
-      --gold: #d4a853;
+      --blush: #e8e8e8;
+      --deep: #333333;
+      --accent: #666666;
+      --muted: #999999;
+      --gold: #cccccc;
       --white: #ffffff;
     }
 
@@ -323,13 +322,16 @@
 
 
         <div class="field">
-          <label for="attendingField">Θα είσαι κι εσύ εκεί;</label>
-          <div class="select-wrap">
-            <select id="attendingField">
-              <option value="">Επίλεξε...</option>
-              <option value="yes">Φυσικά! 🎉</option>
-              <option value="no">Δυστυχώς δεν θα μπορέσω ☹️</option>
-            </select>
+          <label>Θα είσαι κι εσύ εκεί;</label>
+          <div class="guest-options">
+            <label class="guest-opt">
+              <input type="radio" name="attending" value="yes" />
+              <span class="guest-opt-label">Φυσικά! 🎉</span>
+            </label>
+            <label class="guest-opt">
+              <input type="radio" name="attending" value="no" />
+              <span class="guest-opt-label">Δυστυχώς δεν θα μπορέσω ☹️</span>
+            </label>
           </div>
           <div class="error-msg" id="attendingError">Please let us know if you're attending.</div>
         </div>
@@ -379,7 +381,6 @@
     // ─────────────────────────────────────────
 
     const nameField      = document.getElementById('nameField');
-    const attendingField = document.getElementById('attendingField');
     const nameError      = document.getElementById('nameError');
     const attendingError = document.getElementById('attendingError');
     const submitBtn      = document.getElementById('submitBtn');
@@ -402,15 +403,19 @@
     };
 
     // Hide guest count when "no" is selected
-    attendingField.addEventListener('change', function () {
-      document.getElementById('guestCountField').style.display =
-        this.value === 'no' ? 'none' : 'block';
+    document.querySelectorAll('input[name="attending"]').forEach(radio => {
+      radio.addEventListener('change', function () {
+        document.getElementById('guestCountField').style.display =
+          this.value === 'no' ? 'none' : 'block';
+      });
     });
 
     const populateForm = (saved) => {
       nameField.value = saved.name;
-      attendingField.value = saved.attending;
-      attendingField.dispatchEvent(new Event('change'));
+      if (saved.attending) {
+        document.querySelector(`input[name="attending"][value="${saved.attending}"]`).checked = true;
+        document.querySelector(`input[name="attending"][value="${saved.attending}"]`).dispatchEvent(new Event('change'));
+      }
       if (saved.guests) {
         const radio = document.querySelector(`input[name="guests"][value="${saved.guests}"]`);
         if (radio) radio.checked = true;
@@ -419,7 +424,7 @@
 
     const lockForm = () => {
       nameField.disabled = true;
-      attendingField.disabled = true;
+      document.querySelectorAll('input[name="attending"]').forEach(r => r.disabled = true);
       document.querySelectorAll('input[name="guests"]').forEach(r => r.disabled = true);
       submitBtn.disabled = true;
     };
@@ -517,7 +522,8 @@
         nameError.style.display = 'none';
         nameField.style.borderColor = '';
       }
-      if (!attendingField.value) {
+      const attendingRadio = document.querySelector('input[name="attending"]:checked');
+      if (!attendingRadio) {
         attendingError.style.display = 'block';
         valid = false;
       } else {
@@ -529,7 +535,7 @@
       submitBtn.textContent = 'Sending...';
 
       const name      = nameField.value.trim();
-      const attending = attendingField.value;
+      const attending = attendingRadio.value;
       const guests    = attending === 'no'
         ? '1'
         : document.querySelector('input[name="guests"]:checked').value;

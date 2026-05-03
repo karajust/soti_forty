@@ -9,7 +9,8 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --cream: #fdf6ee;
+      /* --cream: #b97221;  */
+      --cream: #fdf6ee; 
       --blush: #f2c4b0;
       --deep: #2b1a12;
       --accent: #c0622a;
@@ -34,7 +35,7 @@
       overflow-x: hidden;
     }
 
-    body::before {
+    /* body::before {
       content: '';
       position: fixed;
       inset: 0;
@@ -57,9 +58,9 @@
       pointer-events: none;
       z-index: 0;
       animation: spin 60s linear infinite;
-    }
+    } */
 
-    @keyframes spin { to { transform: translateX(-50%) rotate(360deg); } }
+    /* @keyframes spin { to { transform: translateX(-50%) rotate(360deg); } } */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(22px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -332,22 +333,19 @@
   <div class="container">
 
     <header class="header">
-      <p class="eyebrow">You're invited</p>
+      <!-- <p class="eyebrow">You're invited</p> -->
       <h1>20 +20<br><em>PARTY!</em></h1>
       <div class="divider"></div>
       <p class="details">
         <!-- ✏️ Edit your party details -->
-        Σάββατο, 18/07 · 20:30<br>
-        123 Celebration Street
+        Σάββατο, 18/07 · 21:00<br>
+        Σχολή Χορού Flamenco Contra Tiempo<br>
+        Φιλικών 58, Περιστέρι
       </p>
     </header>
 
-    <!-- ✏️ FLYER: replace placeholder with <img src="flyer.jpg" alt="Party flyer" /> -->
     <div class="flyer-wrap">
-      <div class="flyer-placeholder">
-        <div class="icon">🎉</div>
-        <p>Replace this with your flyer image<br>(see comment in HTML)</p>
-      </div>
+        <img src="Invitation_Pol_02.jpg" alt="Party flyer" style="display:none;" onload="this.style.display='block'; this.previousElementSibling.style.display='none';" />
     </div>
 
     <div class="rsvp-card">

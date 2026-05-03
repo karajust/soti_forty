@@ -21,7 +21,7 @@
     html, body {
       min-height: 100%;
       background: var(--light_grey);
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       color: var(--deep);
     }
 
@@ -43,7 +43,7 @@
       position: relative;
       z-index: 1;
       width: 100%;
-      max-width: 880px;
+      max-width: 900px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -62,18 +62,56 @@
     }
 
     .header h1 {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Segoe UI', sans-serif;
       font-size: clamp(2.2rem, 6vw, 3rem);
+      font-weight: 400;
       line-height: 1.15;
       color: var(--deep);
       margin-bottom: 12px;
     }
 
-    .header h1 em { font-style: 'DM sans'; color: var(--accent); }
+    .header h1 em { font-family: 'Segoe UI'; font-style: normal; color: var(--accent); }
 
     .divider { width: 48px; height: 1px; background: var(--gold); margin: 1rem auto; opacity: 0.7; }
 
-    .header .details { font-size: 14px; color: var(--muted); line-height: 1.9; }
+    .header .details {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .top-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .date_card,
+    .location_card,
+    .general_card {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.5;
+      background: var(--light_grey);
+      padding: 0.75rem;
+      border-radius: 8px;
+      border: 0.5px solid rgba(0,0,0,0.05);
+    }
+
+    .top-row .date_card,
+    .top-row .location_card {
+      flex: 1;
+    }
+
+    .icon {
+      filter: grayscale(100%);
+      margin-right: 0.5rem;
+    }
+
+    .star {
+      font-size: 1.5em;
+      margin-right: 0.25rem;
+    }
 
     /* ── Flyer ── */
     .flyer-wrap {
@@ -85,28 +123,116 @@
 
     .flyer-wrap img { width: 100%; border-radius: 0px; display: block; box-shadow: 0 8px 40px rgba(43,26,18,0.12); }
 
-    /* ── RSVP Card ── */
-    .rsvp-card {
-      width: 100%;
-      /* background: var(--white); */
-      /* border-radius: 0px; */
-      /* border: 0.5px solid #e8d8cc; */
-      padding: 2rem;
-      animation: fadeUp 1s 0.2s ease both;
-      opacity: 0;
-      animation-fill-mode: forwards;
-      /* box-shadow: 0 4px 24px rgba(43,26,18,0.06); */
-    }
+      /* ── Info card ── */
+      .info-card {
+        width: 100%;
+        padding: 0rem;
+        text-align: center;
+        animation: fadeUp 0.9s 0.15s ease both;
+        opacity: 0;
+        animation-fill-mode: forwards;
+      }
 
-    .rsvp-card h2 {
-      font-family: 'Playfair Display', serif;
+      .info-card h2 {
+      font-family: 'Segoe UI', sans-serif;
       font-size: 1.4rem;
       font-weight: 400;
       color: var(--deep);
-      margin-bottom: 4px;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
     }
 
-    .rsvp-card .subtitle { font-size: 13px; color: var(--muted); margin-bottom: 1.8rem; }
+    .info-card h2::before,
+    .info-card h2::after {
+      content: '';
+      flex: 1;
+      height: 2px;
+      background: var(--gold);
+    }
+
+    .info-card h2::before {
+      margin-right: 1rem;
+    }
+
+    .info-card h2::after {
+      margin-left: 1rem;
+    }
+
+    .info-card p{
+      font-size: 15px;
+      line-height: 1.5rem;
+      color: var(--muted);
+      text-align: center;
+      margin: 0.5rem 0 1rem;
+    }
+
+    .info-card {
+      margin-bottom: 1.5rem;
+    }
+
+    .three-view {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      animation: fadeUp 0.95s 0.18s ease both;
+      opacity: 0;
+      animation-fill-mode: forwards;
+      margin-bottom: 2rem;
+    }
+
+    .three-view .card {
+      /* background: var(--white); */
+      padding: 1rem 1rem 0.95rem;
+      border-radius: 12px;
+      /* border: 0.5px solid rgba(0,0,0,0.05); */
+      text-align: center;
+    }
+
+    .three-view .card h3 {
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--deep);
+      margin-bottom: 0.6rem;
+    }
+
+    .three-view .card p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    /* ── RSVP Card ── */
+    .rsvp-card {
+      width: 100%;
+      padding: 0rem;
+      animation: fadeUp 1s 0.2s ease both;
+      opacity: 0;
+      animation-fill-mode: forwards;
+    }
+
+    .rsvp-card h2 {
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: var(--deep);
+      margin-bottom: 4px;
+      text-transform: uppercase;
+    }
+
+
+    .rsvp-card .rsvp-note {
+      font-size: 15px;
+      color: var(--muted);
+      text-align: center;
+      margin: 0.5rem 0 1rem;
+    }
 
     /* ── Fields ── */
     .field { margin-bottom: 1.3rem; }
@@ -126,7 +252,7 @@
       padding: 11px 14px;
       border: 0.5px solid #ddd3cc;
       border-radius: 0px;
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       font-size: 14px;
       color: var(--deep);
       background: var(--light_grey);
@@ -196,7 +322,7 @@
       color: white;
       border: none;
       border-radius: 0px;
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       font-size: 14px;
       font-weight: 500;
       letter-spacing: 0.04em;
@@ -216,7 +342,7 @@
       color: var(--accent);
       border: 0.5px solid var(--accent);
       border-radius: 12px;
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       font-size: 13px;
       font-weight: 500;
       cursor: pointer;
@@ -270,7 +396,7 @@
     }
 
     .success-panel h3 {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Segoe UI', sans-serif;
       font-size: 1.2rem;
       font-weight: 400;
       color: var(--deep);
@@ -288,24 +414,51 @@
 
     <header class="header">
       <!-- <p class="eyebrow">You're invited</p> -->
-      <h1>20 +20<br><em>PARTY!</em></h1>
-      <div class="divider"></div>
-      <p class="details">
-        <!-- ✏️ Edit your party details -->
-        Σάββατο, 18/07 · 21:00<br>
-        Σχολή Χορού Flamenco Contra Tiempo<br>
-        Φιλικών 58, Περιστέρι
-      </p>
-    </header>
+      <h1>20 + 20  PARTY!</h1>
+      <!-- <div class="divider"></div> -->
+    </header> 
 
     <div class="flyer-wrap">
-        <img src="Invitation_Pol_02.jpg" alt="Party flyer" style="display:none;" onload="this.style.display='block'; this.previousElementSibling.style.display='none';" />
+        <!-- <img src="Invitation_Pol_02.jpg" alt="Party flyer" style="display:none;" onload="this.style.display='block'; this.previousElementSibling.style.display='none';" /> -->
+        <img src="Invitation_Pol_frame breit_text diag.jpg" alt="Party flyer" style="display:none;" onload="this.style.display='block'; this.previousElementSibling.style.display='none';" />
+    </div>
+
+    <div class="info-card">
+      <!-- <h2>INFO</h2> 
+      <div class="details">
+        <div class="top-row">
+          <div class="date_card">
+            <span class="icon"></span> Σάββατο, 18/07 · 21:00
+          </div>
+          <div class="location_card">
+            <span class="icon"></span> Σχολή Χορού Flamenco Contra Tiempo<br>Φιλικών 58, Περιστέρι
+          </div>
+        </div>
+        <div class="general_card">
+          <span class="star"></span> Βάλτε το χορό, βάζω τα ποτά! <br> (θα υπάρχει open bar)
+        </div>
+      </div>
+    </div> -->
+
+    <div class="three-view">
+      <div class="card day">
+        <h3>ΜΕΡΑ</h3>
+        <p>Σάββατο, 18/07 · 21:00</p>
+      </div>
+      <div class="card part">
+        <h3>ΜΕΡΟΣ</h3>
+        <p>Σχολή Χορού Flamenco Contra Tiempo · Φιλικών 58, Περιστέρι</p>
+      </div>
+      <div class="card other">
+        <h3>ΑΛΛΑ</h3>
+        <p>Βάλτε το χορό, βάζω τα ποτά! <br> (θα υπάρχει open bar)</p>
+      </div>
     </div>
 
     <div class="rsvp-card">
-      <h2>Πες μου αν θα τα καταφερεις!</h2>
+      <h2>RSVP</h2>
+      <p class="rsvp-note">έως 05.06</p>
       <br>
-      <!-- <p class="subtitle" id="cardSubtitle">Θα χαρώ πολύ 🤩</p> -->
 
       <!-- Shown when user has already responded -->
       <div class="prev-banner" id="prevBanner"></div>
@@ -326,32 +479,32 @@
           <div class="guest-options">
             <label class="guest-opt">
               <input type="radio" name="attending" value="yes" />
-              <span class="guest-opt-label">Φυσικά! 🎉</span>
+              <span class="guest-opt-label">Φυσικά!</span>
             </label>
             <label class="guest-opt">
               <input type="radio" name="attending" value="no" />
-              <span class="guest-opt-label">Δυστυχώς δεν θα μπορέσω ☹️</span>
+              <span class="guest-opt-label">δεν θα τα καταφερω</span>
             </label>
           </div>
           <div class="error-msg" id="attendingError">Please let us know if you're attending.</div>
         </div>
 
         <div class="field" id="guestCountField">
-          <label>Number of guests</label>
+          <label>Αριθμός ατόμων συνολικά</label>
           <div class="guest-options">
             <label class="guest-opt">
               <input type="radio" name="guests" value="1" checked />
-              <span class="guest-opt-label">Εγω (1)</span>
+              <span class="guest-opt-label">1</span>
             </label>
             <label class="guest-opt">
               <input type="radio" name="guests" value="2" />
-              <span class="guest-opt-label">τα δυο μας (2)</span>
+              <span class="guest-opt-label">2</span>
             </label>
           </div>
         </div>
 
-        <button class="submit-btn" id="submitBtn">RSVP 🎈</button>
-        <button class="edit-btn" id="cancelEditBtn" style="display:none;">Ακύρωση</button>
+        <button class="submit-btn" id="submitBtn">ΕΠΙΒΕΒΑΙΩΣΗ</button>
+        <button class="edit-btn" id="cancelEditBtn" style="display:none;">ΑΚΥΡΩΣΗ</button>
       </div>
 
       <div class="success-panel" id="successPanel">
@@ -366,10 +519,9 @@
   </div>
 
   <script>
-    // ─────────────────────────────────────────
-    // ✏️  CONFIGURATION — edit these two lines
-    // ─────────────────────────────────────────
-    const RSVP_CUTOFF_DATE = '2027-06-07'; // Last day guests can edit (YYYY-MM-DD)
+   
+   
+    const RSVP_CUTOFF_DATE = '2026-06-05'; // Last day guests can edit (YYYY-MM-DD)
     const STORAGE_KEY      = 'rsvp_soti_forty';
 
     // Google Form

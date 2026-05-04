@@ -241,7 +241,7 @@
 
     .field label {
       display: block;
-      font-size: 1.05rem;
+      font-size: 0.95rem;
       padding: 0.25rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -256,7 +256,7 @@
       border: 0.5px solid #ddd3cc;
       border-radius: 0px;
       font-family: 'Segoe UI', sans-serif;
-      font-size: 1.05rem;
+      font-size: 0.95rem;
       text-align: center;
       color: var(--deep);
       background: var(--light_grey);
@@ -305,7 +305,7 @@
       border: 0.5px solid #ddd3cc;
       border-radius: 0px;
       background: var(--light_grey);
-      font-size: 1.05rem;
+      font-size: 0.95rem;
       color: var(--muted);
       transition: all 0.15s;
       cursor: pointer;
@@ -350,7 +350,6 @@
       background: transparent;
       color: var(--accent);
       border: 0.5px solid var(--accent);
-      border-radius: 12px;
       font-family: 'Segoe UI', sans-serif;
       font-size: 1.05rem;
       font-weight: 500;
@@ -444,13 +443,15 @@
       </div>
       <div class="card other">
         <h3>ΠΩΣ</h3>
-        <p>Βάλτε το χορό, βάζω τα ποτά! <br> (θα υπάρχει open bar)</p>
+        <p>Εσείς στο χορό, εγώ στα ποτά<br> (θα υπάρχει open bar)
+        <br>•<br>
+        Βάλτε τα παιδιά για ύπνο! <br> (adults only)</p>
       </div>
     </div>
 
     <div class="rsvp-card">
       <h3>RSVP</h3>
-      <p class="rsvp-note">έως 05.06</p>
+      <p class="rsvp-note">έως 07.06</p>
       <br>
 
       <!-- Shown when user has already responded -->
@@ -514,7 +515,7 @@
   <script>
    
    
-    const RSVP_CUTOFF_DATE = '2026-06-05'; // Last day guests can edit (YYYY-MM-DD)
+    const RSVP_CUTOFF_DATE = '2026-06-12'; // Last day guests can edit (YYYY-MM-DD)
     const STORAGE_KEY      = 'rsvp_soti_forty';
 
     // Google Form
@@ -589,8 +590,8 @@
           isEdit ? `Η απάντηση σου ανανεώθηκε, ${first}! Τα λέμε εκεί 🥂` : `Ευχαριστώ, ${first}! Τα λέμε εκεί 🥂`;
         document.getElementById('successBody').textContent =
           guests === '2'
-            ? 'Δύο θέσεις καπαρώθηκαν! Ανυπομονώ να γιορτάσουμε!'
-            : 'Μία θέση καπαρώθηκε! Ανυπομονώ να γιορτάσουμε!';
+            ? 'Δύο θέσεις καπαρώθηκαν!'
+            : 'Μία θέση καπαρώθηκε! ;
       } else {
         document.getElementById('successTitle').textContent = `Ευχαριστώ πολύ για την απάντηση, ${first}.`;
         document.getElementById('successBody').textContent =
